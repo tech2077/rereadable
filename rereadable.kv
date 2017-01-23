@@ -1,0 +1,29 @@
+#:kivy 1.2.0
+<ReReadableRoot>:
+    canvas.before:
+        Color:
+            rgba: 0.8, 0.8, 0.8, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    inputbox: inputbox
+    TextInput:
+        id: inputbox
+        multiline: True
+        pos: 0, root.height - self.height
+        size: root.width, root.height / 4
+        font_name: "Comic Sans MS Bold"
+        font_size: 20
+        on_text_validate: HighlightedTextInput.on_enter
+        markup: True
+    Label:
+        pos: 0, root.height * 3 / 4 - self.height
+        size: root.width, root.height * 3 / 4
+        font_name: "Comic Sans MS Bold"
+        font_size: 40
+        color: 0, 0, 0, 1
+        text_size: self.size
+        halign: 'left'
+        valign: 'top'
+        markup: True
+        text: root.highlight_text(inputbox.text)
